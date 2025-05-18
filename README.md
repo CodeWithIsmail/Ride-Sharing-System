@@ -40,3 +40,9 @@ The ride-sharing system enables passengers to post ride requests, allows drivers
 - 📩 **Support**: In-app help or email-based customer support.
 - 📊 **Reporting**: Admin reports on ride volume or user activity.
 - 🛣️ **Route Optimization**: Suggesting shortest routes.
+
+## 🛠️ Tech Stack
+- Frontend: Reactjs
+- Backend: Node.js+Express
+- Database: MongoDB
+- Styling: Tailwind CSS
