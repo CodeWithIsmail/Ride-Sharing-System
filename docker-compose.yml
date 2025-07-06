@@ -1,0 +1,126 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: ride-sharing-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - ride-sharing-network
+
+  # User Service
+  user-service:
+    build:
+      context: ./backend/user-service
+      dockerfile: Dockerfile
+    container_name: ride-sharing-user-service
+    restart: unless-stopped
+    environment:
+      PORT: 3001
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/ride-sharing-users?authSource=admin
+      JWT_SECRET: your-super-secret-jwt-key-change-in-production
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+    networks:
+      - ride-sharing-network
+
+  # Ride Service
+  ride-service:
+    build:
+      context: ./backend/ride-service
+      dockerfile: Dockerfile
+    container_name: ride-sharing-ride-service
+    restart: unless-stopped
+    environment:
+      PORT: 3002
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/ride-sharing-rides?authSource=admin
+      USER_SERVICE_URL: http://user-service:3001
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongodb
+      - user-service
+    networks:
+      - ride-sharing-network
+
+  # Payment Service
+  payment-service:
+    build:
+      context: ./backend/payment-service
+      dockerfile: Dockerfile
+    container_name: ride-sharing-payment-service
+    restart: unless-stopped
+    environment:
+      PORT: 3003
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/ride-sharing-payments?authSource=admin
+      RIDE_SERVICE_URL: http://ride-service:3002
+      USER_SERVICE_URL: http://user-service:3001
+    ports:
+      - "3003:3003"
+    depends_on:
+      - mongodb
+      - user-service
+      - ride-service
+    networks:
+      - ride-sharing-network
+
+  # Admin Service
+  admin-service:
+    build:
+      context: ./backend/admin-service
+      dockerfile: Dockerfile
+    container_name: ride-sharing-admin-service
+    restart: unless-stopped
+    environment:
+      PORT: 3004
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/ride-sharing-admin?authSource=admin
+      USER_SERVICE_URL: http://user-service:3001
+      RIDE_SERVICE_URL: http://ride-service:3002
+    ports:
+      - "3004:3004"
+    depends_on:
+      - mongodb
+      - user-service
+      - ride-service
+    networks:
+      - ride-sharing-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ride-sharing-frontend
+    restart: unless-stopped
+    environment:
+      REACT_APP_USER_SERVICE_URL: http://localhost:3001
+      REACT_APP_RIDE_SERVICE_URL: http://localhost:3002
+      REACT_APP_PAYMENT_SERVICE_URL: http://localhost:3003
+      REACT_APP_ADMIN_SERVICE_URL: http://localhost:3004
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - ride-service
+      - payment-service
+      - admin-service
+    networks:
+      - ride-sharing-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  ride-sharing-network:
+    driver: bridge 

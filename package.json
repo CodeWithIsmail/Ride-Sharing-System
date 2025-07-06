@@ -1,0 +1,35 @@
+{
+  "name": "ride-sharing-system",
+  "version": "1.0.0",
+  "description": "A microservice-based ride-sharing system",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node setup.js",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend/user-service && npm install && cd ../ride-service && npm install && cd ../payment-service && npm install && cd ../admin-service && npm install",
+    "dev": "concurrently \"npm run dev:user\" \"npm run dev:ride\" \"npm run dev:payment\" \"npm run dev:admin\" \"npm run dev:frontend\"",
+    "dev:user": "cd backend/user-service && npm run dev",
+    "dev:ride": "cd backend/ride-service && npm run dev",
+    "dev:payment": "cd backend/payment-service && npm run dev",
+    "dev:admin": "cd backend/admin-service && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "concurrently \"npm run start:user\" \"npm run start:ride\" \"npm run start:payment\" \"npm run start:admin\"",
+    "start:user": "cd backend/user-service && npm start",
+    "start:ride": "cd backend/ride-service && npm start",
+    "start:payment": "cd backend/payment-service && npm start",
+    "start:admin": "cd backend/admin-service && npm start",
+    "docker:setup": "chmod +x docker-setup.sh && ./docker-setup.sh",
+    "docker:setup:win": "powershell -ExecutionPolicy Bypass -File docker-setup.ps1",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose up --build -d",
+    "docker:logs": "docker-compose logs -f",
+    "docker:clean": "docker-compose down -v --remove-orphans"
+  },
+  "keywords": ["ride-sharing", "microservices", "react", "nodejs", "mongodb"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
