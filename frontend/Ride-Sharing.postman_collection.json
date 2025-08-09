@@ -1,0 +1,719 @@
+{
+	"info": {
+		"_postman_id": "84ceb5a2-9e98-4c2f-b0ce-c1e91fb36958",
+		"name": "Ride-Sharing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47269680",
+		"_collection_link": "https://software-design-lab.postman.co/workspace/Software-Design-Lab-Workspace~557206a1-66ea-4e46-8867-1d0de25fd7cf/collection/28557296-84ceb5a2-9e98-4c2f-b0ce-c1e91fb36958?action=share&source=collection_link&creator=47269680"
+	},
+	"item": [
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "Passenger Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Passenger 1\",\r\n  \"email\": \"passenger1@example.com\", \r\n  \"password\": \"passenger1\",\r\n  \"role\": \"passenger\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"driver1@example.com\",\r\n  \"password\": \"driver1\",\r\n  \"name\": \"Driver 1\",\r\n  \"phone\": \"+1234567890\",\r\n  \"role\": \"driver\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin1@example.com\",\r\n  \"password\": \"admin1\",\r\n  \"name\": \"Admin 1\",\r\n  \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Passenger Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"passenger1@example.com\", \r\n  \"password\": \"passenger1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Driver Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"driver1@example.com\", \r\n  \"password\": \"driver1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin1@example.com\", \r\n  \"password\": \"admin1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTdiOGRlMjU0ZWU1MGFkY2IzYWMiLCJlbWFpbCI6ImFkbWluMUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTc1MDY5OCwiZXhwIjoxNzUxODM3MDk4fQ.C3Dib4g_KCKAwGZuZoViH-8EpcJrafeXbAzO4Zuo3Os",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTBkMTFkOWRhZTgwZmEyNzNmMDkiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzQ4OTk1LCJleHAiOjE3NTE4MzUzOTV9.2vJPX-LL949Hn_BTPEaDnfMvnr3EV71JgiqmLtXGtqM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/users/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTBkMTFkOWRhZTgwZmEyNzNmMDkiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzQ4OTk1LCJleHAiOjE3NTE4MzUzOTV9.2vJPX-LL949Hn_BTPEaDnfMvnr3EV71JgiqmLtXGtqM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/users/6869977ade254ee50adcb3a9?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"6869977ade254ee50adcb3a9"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Service",
+			"item": [
+				{
+					"name": "Record Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTc3YWRlMjU0ZWU1MGFkY2IzYTkiLCJlbWFpbCI6ImRyaXZlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUxNzUwODk5LCJleHAiOjE3NTE4MzcyOTl9.Hx9dK487aLXR0cA8v4qJCbsrXfbP7RCH6gn9y3Nvds0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/api/payments/6869e9b92ef13053c59ef7e7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"api",
+								"payments",
+								"6869e9b92ef13053c59ef7e7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Receipt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTczYmRlMjU0ZWU1MGFkY2IzYTYiLCJlbWFpbCI6InBhc3NlbmdlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzUwODkzLCJleHAiOjE3NTE4MzcyOTN9.V3oTbkVRMstK5PtZ6jjase11OSuyUCCElubnW8rkLfo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3003/api/payments/6869eb3927f2e9153ad9d21d/receipt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3003",
+							"path": [
+								"api",
+								"payments",
+								"6869eb3927f2e9153ad9d21d",
+								"receipt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Service",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTdiOGRlMjU0ZWU1MGFkY2IzYWMiLCJlbWFpbCI6ImFkbWluMUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTc1MDkwNCwiZXhwIjoxNzUxODM3MzA0fQ.yWDzQAXYbpZAyb-xbmorn-3gw9GKmwhd8wMkbpAXJ4g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3004/api/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Rides",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTdiOGRlMjU0ZWU1MGFkY2IzYWMiLCJlbWFpbCI6ImFkbWluMUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTc1MDkwNCwiZXhwIjoxNzUxODM3MzA0fQ.yWDzQAXYbpZAyb-xbmorn-3gw9GKmwhd8wMkbpAXJ4g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3004/api/admin/rides",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"api",
+								"admin",
+								"rides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Rides Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTdiOGRlMjU0ZWU1MGFkY2IzYWMiLCJlbWFpbCI6ImFkbWluMUBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTc1MDkwNCwiZXhwIjoxNzUxODM3MzA0fQ.yWDzQAXYbpZAyb-xbmorn-3gw9GKmwhd8wMkbpAXJ4g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3004/api/admin/users/686990d11d9dae80fa273f09/deactivate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3004",
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"686990d11d9dae80fa273f09",
+								"deactivate"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ride Service",
+			"item": [
+				{
+					"name": "Create Ride Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTczYmRlMjU0ZWU1MGFkY2IzYTYiLCJlbWFpbCI6InBhc3NlbmdlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzUwODkzLCJleHAiOjE3NTE4MzcyOTN9.V3oTbkVRMstK5PtZ6jjase11OSuyUCCElubnW8rkLfo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pickupLocation\": \"Dhaka University, Dhaka\",\r\n  \"dropoffLocation\": \"Mirpur 10, Dhaka\",\r\n  \"targetTime\": \"2024-01-15T10:00:00.000Z\",\r\n  \"desiredFare\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/api/rides",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available ride requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTc3YWRlMjU0ZWU1MGFkY2IzYTkiLCJlbWFpbCI6ImRyaXZlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUxNzUwODk5LCJleHAiOjE3NTE4MzcyOTl9.Hx9dK487aLXR0cA8v4qJCbsrXfbP7RCH6gn9y3Nvds0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3002/api/rides",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply to posted Ride",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTc3YWRlMjU0ZWU1MGFkY2IzYTkiLCJlbWFpbCI6ImRyaXZlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUxNzUwODk5LCJleHAiOjE3NTE4MzcyOTl9.Hx9dK487aLXR0cA8v4qJCbsrXfbP7RCH6gn9y3Nvds0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3002/api/rides/68699c8c104a368eda98539f/apply",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides",
+								"68699c8c104a368eda98539f",
+								"apply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ride Application",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTczYmRlMjU0ZWU1MGFkY2IzYTYiLCJlbWFpbCI6InBhc3NlbmdlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzUwODkzLCJleHAiOjE3NTE4MzcyOTN9.V3oTbkVRMstK5PtZ6jjase11OSuyUCCElubnW8rkLfo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3002/api/rides/68699c8c104a368eda98539f/applications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides",
+								"68699c8c104a368eda98539f",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select Ride",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTczYmRlMjU0ZWU1MGFkY2IzYTYiLCJlbWFpbCI6InBhc3NlbmdlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzUwODkzLCJleHAiOjE3NTE4MzcyOTN9.V3oTbkVRMstK5PtZ6jjase11OSuyUCCElubnW8rkLfo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"driverId\": \"6869977ade254ee50adcb3a9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/api/rides/68699c8c104a368eda98539f/select",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides",
+								"68699c8c104a368eda98539f",
+								"select"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Ride",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTczYmRlMjU0ZWU1MGFkY2IzYTYiLCJlbWFpbCI6InBhc3NlbmdlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoicGFzc2VuZ2VyIiwiaWF0IjoxNzUxNzUwODkzLCJleHAiOjE3NTE4MzcyOTN9.V3oTbkVRMstK5PtZ6jjase11OSuyUCCElubnW8rkLfo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/api/rides/68699959104a368eda98538e/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides",
+								"68699959104a368eda98538e",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Ride",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODY5OTc3YWRlMjU0ZWU1MGFkY2IzYTkiLCJlbWFpbCI6ImRyaXZlcjFAZXhhbXBsZS5jb20iLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUxNzUwODk5LCJleHAiOjE3NTE4MzcyOTl9.Hx9dK487aLXR0cA8v4qJCbsrXfbP7RCH6gn9y3Nvds0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3002/api/rides/68699c8c104a368eda98539f/complete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"api",
+								"rides",
+								"68699c8c104a368eda98539f",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
