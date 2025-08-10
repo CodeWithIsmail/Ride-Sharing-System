@@ -1,4 +1,3 @@
-// src/components/rides/MyRides.js
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -23,15 +22,12 @@ const MyRides = () => {
             const token = localStorage.getItem('token');
             const headers = { Authorization: `Bearer ${token}` };
 
-            // --- THE CRITICAL FIX: Make three separate, specific API calls ---
-            // We run them in parallel for better performance.
             const [postedResponse, confirmedResponse, completedResponse] = await Promise.all([
                 axios.get('http://localhost:3002/api/rides?status=posted', { headers }),
                 axios.get('http://localhost:3002/api/rides?status=confirmed', { headers }),
                 axios.get('http://localhost:3002/api/rides?status=completed', { headers })
             ]);
 
-            // --- Now, filter each pre-categorized list by the passenger's ID ---
             const myPosted = postedResponse.data.filter(ride => ride.passengerId === user.userId);
             const myConfirmed = confirmedResponse.data.filter(ride => ride.passengerId === user.userId);
             const myCompleted = completedResponse.data.filter(ride => ride.passengerId === user.userId);

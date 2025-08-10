@@ -26,7 +26,6 @@ const PostRide = () => {
       const token = localStorage.getItem("token");
       const dataToSend = {
         ...rideData,
-        // Ensure time is sent in UTC ISO format, as expected by backend
         targetTime: new Date(rideData.targetTime).toISOString(),
       };
 
