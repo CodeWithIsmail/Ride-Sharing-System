@@ -1,4 +1,3 @@
-// src/components/rides/RideDetails.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
@@ -8,7 +7,6 @@ const RideDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // The ride data passed from the MyRides page
     const ride = location.state?.ride; 
 
     const [applications, setApplications] = useState([]);
@@ -17,7 +15,6 @@ const RideDetails = () => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        // If the user navigates here directly, the ride object won't exist.
         if (!ride) {
             setLoading(false);
             return;
@@ -27,18 +24,14 @@ const RideDetails = () => {
             setLoading(true);
             try {
                 const token = localStorage.getItem('token');
-                // We attempt to fetch applications for the ride.
                 const response = await axios.get(`http://localhost:3002/api/rides/${rideId}/applications`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 
-                // If the API call succeeds, the ride is 'posted' and we have applications.
                 setApplications(response.data);
                 setIsRidePosted(true);
 
             } catch (err) {
-                // If the API call fails (e.g., 404), it means the ride is no longer posted.
-                // This is expected for 'confirmed' or 'completed' rides.
                 console.log("Could not fetch applications, ride is likely confirmed or completed.", err.response?.data);
                 setIsRidePosted(false);
             } finally {
@@ -57,7 +50,6 @@ const RideDetails = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setMessage('Driver selected successfully! This ride is now confirmed.');
-            // After selection, the application list is no longer relevant for this view.
             setIsRidePosted(false); 
         } catch (err) {
             setMessage('Failed to select driver. Please try again.');
@@ -65,7 +57,6 @@ const RideDetails = () => {
         }
     };
 
-    // Handle the case where a user might land on this page without ride data
     if (!ride) {
         return (
             <div className="container mt-5">
